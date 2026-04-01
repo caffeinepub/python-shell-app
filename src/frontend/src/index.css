@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+    --background: 0.18 0 0;
+    --foreground: 0.88 0 0;
+    --card: 0.21 0 0;
+    --card-foreground: 0.88 0 0;
+    --popover: 0.24 0 0;
+    --popover-foreground: 0.88 0 0;
+    /* Mint green primary */
+    --primary: 0.72 0.17 160;
+    --primary-foreground: 0.1 0 0;
+    --secondary: 0.24 0 0;
+    --secondary-foreground: 0.88 0 0;
+    --muted: 0.22 0 0;
+    --muted-foreground: 0.57 0 0;
+    /* Mint accent */
+    --accent: 0.72 0.17 160;
+    --accent-foreground: 0.1 0 0;
+    --destructive: 0.62 0.2 25;
+    --destructive-foreground: 0.97 0 0;
+    --border: 0.32 0 0;
+    --input: 0.32 0 0;
+    --ring: 0.72 0.17 160;
+    --chart-1: 0.72 0.17 160;
+    --chart-2: 0.65 0.15 30;
+    --chart-3: 0.6 0.13 200;
+    --chart-4: 0.65 0.15 30;
+    --chart-5: 0.58 0.17 300;
+    --sidebar: 0.15 0 0;
+    --sidebar-foreground: 0.88 0 0;
+    --sidebar-primary: 0.72 0.17 160;
+    --sidebar-primary-foreground: 0.1 0 0;
+    --sidebar-accent: 0.22 0 0;
+    --sidebar-accent-foreground: 0.88 0 0;
+    --sidebar-border: 0.27 0 0;
+    --sidebar-ring: 0.72 0.17 160;
+    --ide-header: 0.2 0.04 160;
+    --ide-tab-active: 0.23 0.05 160;
+    --ide-activitybar: 0.15 0.03 160;
+    --ide-run: 0.72 0.17 160;
+    --ide-run-fg: 0.1 0 0;
+    --term-output: 0.88 0 0;
+    --term-error: 0.65 0.2 25;
+    --term-system: 0.57 0 0;
+    --term-prompt: 0.72 0.17 160;
+    --term-keyword: 0.72 0.22 340;
+    --term-builtin: 0.72 0.17 150;
+    --term-string: 0.82 0.15 90;
+    --term-number: 0.7 0.18 290;
+    --term-operator: 0.68 0.2 25;
+    --term-punctuation: 0.72 0.13 200;
+    --term-comment: 0.53 0.03 165;
+  }
+  html,
+  .dark {
+    color-scheme: dark;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, -apple-system, Inter, sans-serif;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.scrollbar-ide::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-ide::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-ide::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 3px;
+}
+.scrollbar-ide::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground));
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: oklch(var(--term-output));
+  caret-color: oklch(var(--primary));
+  font-family: "JetBrains Mono", Consolas, Monaco, "Courier New", monospace;
+}
+.terminal-input::placeholder {
+  color: oklch(var(--muted-foreground));
+  opacity: 0.6;
+}
+.terminal-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.line-numbers {
+  user-select: none;
+  text-align: right;
+  padding: 16px 10px;
+  color: oklch(var(--muted-foreground));
+  opacity: 0.5;
+  font-family: "JetBrains Mono", Consolas, Monaco, "Courier New", monospace;
+  line-height: 1.65;
+  white-space: pre;
+  pointer-events: none;
+}
+
+.syn-keyword {
+  color: oklch(var(--term-keyword));
+  font-weight: 600;
+}
+.syn-builtin {
+  color: oklch(var(--term-builtin));
+}
+.syn-string {
+  color: oklch(var(--term-string));
+}
+.syn-number {
+  color: oklch(var(--term-number));
+}
+.syn-operator {
+  color: oklch(var(--term-operator));
+}
+.syn-punct {
+  color: oklch(var(--term-punctuation));
+}
+.syn-comment {
+  color: oklch(var(--term-comment));
+  font-style: italic;
+}
+.syn-default {
+  color: oklch(var(--term-output));
+}
+
+.resize-handle {
+  height: 4px;
+  width: 100%;
+  cursor: row-resize;
+  background: oklch(var(--border));
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.resize-handle:hover,
+.resize-handle.dragging {
+  background: oklch(var(--primary));
+}
